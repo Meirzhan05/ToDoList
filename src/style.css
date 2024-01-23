@@ -1,0 +1,310 @@
+:root {
+    --dark-gray: rgb(128, 122, 122);
+    --checkbox-checked: rgb(184, 92, 92);
+    --light-gray: rgb(228, 220, 220);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#content {
+    margin: auto;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 50px
+}
+
+#add-anchor, 
+#add-btn, 
+#cancel-btn, 
+#add-anchor-task, 
+#cancel-task-btn, 
+#add-task-btn,
+.cancel-task-ext-btn,
+.add-task-ext-btn {
+    cursor: pointer;
+}
+
+#add-anchor, #add-anchor-task {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background-color: rgb(238, 232, 232);
+    width: 120px;
+    padding: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgb(78, 74, 74);
+    border-radius: 4px;
+}
+
+#add-anchor:hover, #add-anchor-task:hover {
+    background-color: rgb(194, 186, 186);
+}
+
+#project-dialog {
+    margin: auto;
+    width: 350px;
+    padding: 25px;
+    border: none;
+    border-radius: 10px;
+}
+
+#project-dialog[open] {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#name-input {
+    width: 100%;
+    padding: 8px 5px;
+    border-radius: 5px;
+    border: 1px rgb(182, 176, 176) solid;
+    margin-top: 10px;
+}
+
+#name-input:focus {
+    outline: none;
+    border: 2px rgb(65, 55, 55) solid;
+}
+
+#name-dialog-label {
+    font-weight: bold;
+}
+
+#div-btn {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.task-ext-btn-div {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px
+}
+ 
+#add-btn, #add-task-btn, .add-task-ext-btn {
+    background-color: black;
+    color: white;
+}
+
+#add-btn, #cancel-btn, .cancel-task-ext-btn, .add-task-ext-btn {
+    font-size: 1rem;
+}
+
+#add-btn, #cancel-btn, #add-task-btn, #cancel-task-btn, .cancel-task-ext-btn, .add-task-ext-btn {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+svg {
+    width: 23px;
+    fill: var(--dark-gray);
+    object-fit: cover;
+}
+
+.trash-bin > svg > path, .project-trash-bin > svg > path {
+    stroke: #ef4444;
+}
+
+.project-trash-bin {
+    position: absolute;
+    right: 26%;
+}
+
+.trash-bin {
+    position: absolute;
+    right: 25%;
+}
+
+.projects-div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+    gap: 10px;
+    height: 65px;
+}
+
+.hash-svg-div {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.projects-div:hover {
+    background-color: var(--light-gray)
+}
+
+/* Task Dialog */
+#task-dialog {
+    margin: auto;
+    padding: 10px;
+    width: 50vw;
+    outline: none;
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+}
+
+#task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#task-description-input, #task-name-input{
+    border: none;
+    outline: none;
+    font-size: .8rem;
+    padding: 5px;
+    font-size: .8rem;
+}
+
+#date-btn, #task-ext-date-btn {
+    width: 110px;
+}
+
+#task-ext-date-btn {
+    margin-top: 10px;
+}
+
+#task-div-btn {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding-top: 10px; 
+}
+
+.checkbox-label {
+    font-size: .9rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.checkbox-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--light-gray);
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    width: 1.2em;
+    height: 1.2em;
+    border: 1px solid var(--dark-gray);
+    border-radius: 50%;
+    transform: translateY(-0.075em);       
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--checkbox-checked);
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.checkbox-label + .checkbox-label {
+    margin-top: 1em;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+#task-ext-dialog {
+    margin: auto;
+    width: 60vw;
+    height: 90vh;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#task-ext-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+#task-ext-navbar > p {
+    font-size: .9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+#close-x-div {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#close-x-div:hover {
+    background-color: rgb(243, 237, 237);
+    border-radius: 3px;
+}
+
+#close-x-div > svg {
+    width: 15px;
+    fill: #666;
+    stroke-width: 1px;
+}
+
+#task-ext-desc, #task-ext-name {
+    font-size: .9rem;
+    width: 100%;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#task-ext-desc:focus, #task-ext-name:focus {
+    border: 1px solid #666;
+}
+
+#task-ext-name {
+    font-size: 1rem;
+    font-weight: 600;
+}
